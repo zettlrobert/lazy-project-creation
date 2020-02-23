@@ -4,11 +4,16 @@
   "description": "First CLI Tool, creates a Project and git Repository",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src/"
   },
   "author": "Zettl Robert",
   "license": "ISC",
   "dependencies": {
     "inquirer": "^7.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1"
   }
 }
