@@ -1,0 +1,11 @@
+{
+  "name": "lazy-project-creation",
+  "version": "1.0.0",
+  "description": "First CLI Tool, creates a Project and git Repository",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zettl Robert",
+  "license": "ISC"
+}
