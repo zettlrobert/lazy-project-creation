@@ -4,13 +4,12 @@ exports.getHelp = () => {
   `;
 
   const helpConfig = `
-  \t --supported-workspaces \t currently supported project types.
+    --supported \t currently supported project types.
 
-  \t --config "workspace" \t \t set workspace path for passed argument.
+    --config "workspace" \t set workspace path for passed argument.
 
   `;
 
 
   console.log(helpWelcome, helpConfig);
-
 };
