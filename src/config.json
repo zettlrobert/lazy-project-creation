@@ -7,8 +7,8 @@
   ],
   "workspaces": [
     {
-      "web": null,
-      "nodejs": null,
+      "web": "/media/zerodev/test",
+      "nodejs": "/test",
       "flutter": null,
       "go": null
     }

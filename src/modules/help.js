@@ -5,6 +5,7 @@ exports.getHelp = () => {
 
   const helpConfig = `
     --supported \t currently supported project types.
+    
 
     --config "workspace" \t set workspace path for passed argument.
 

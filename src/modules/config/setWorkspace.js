@@ -75,7 +75,6 @@ const setWorkspace = (workspace, lpcConfig) => {
     }
   };
 
-
   const askForPath = () => {
     inquirer
       .prompt(

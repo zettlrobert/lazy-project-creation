@@ -1,8 +1,6 @@
-const inquirer = require('inquirer');
-const {
-  getLpcConfig,
-} = require('./modules/config/getConfig');
-const { setWorkspace } = require('./modules/config/setWorkspace');
+const { defaultTask } = require('./modules/default');
+const { getLpcConfig } = require('./modules/config/getConfig');
+const { updateWorkspace } = require('./modules/config/updateWorkspace');
 const help = require('./modules/help');
 // testing logs
 // const test = require('./tests');
@@ -20,6 +18,13 @@ const lpcConfig = getLpcConfig();
 
 // Pull Out Project Types from Configuration Data
 const { projectTypes } = lpcConfig;
+
+
+// Default with Selection
+if (!process.argv[2]) {
+  defaultTask();
+}
+
 
 // Lists commands and basic instructions for lpc
 if (process.argv[2] === '--help') {
@@ -39,16 +44,5 @@ if (process.argv[2] === '--supported') {
 
 // Configure Workspaces for lpc
 if (process.argv[2] === '--config') {
-  inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'setWorkspacePath',
-        message: 'which workspace path do you want to set?',
-        choices: [...projectTypes],
-      },
-    ])
-    .then((answers) => {
-      setWorkspace(answers.setWorkspacePath, lpcConfig);
-    });
+  updateWorkspace();
 }
