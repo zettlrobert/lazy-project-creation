@@ -10,6 +10,6 @@ exports.getHelp = () => {
 
   `;
 
-
+  // eslint-disable-next-line
   console.log(helpWelcome, helpConfig);
 };
