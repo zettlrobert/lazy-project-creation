@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
 
+const { createWebProject } = require('./createProjects/createWebProject');
+
 const { getLpcConfig } = require('./config/getConfig');
 
 const { projectTypes, workspaces } = getLpcConfig();
@@ -22,7 +24,7 @@ const doesWorkspaceForProjectExist = (workspaceForType) => {
   return {
     exists: true,
     workspaceForProject,
-    message: `Creating ${workspaceForType} project in workspace ${workspaceForProject}...`,
+    message: `Selected ${workspaceForType} project in workspace ${workspaceForProject}`,
   };
 };
 
@@ -45,9 +47,12 @@ const createProject = () => {
 
         if (doesExist.exists) {
           console.log(doesExist.message);
-          console.log(
-            // CREATEHERE
-          );
+          // Pass projectType and Path to Create Web Function
+          const creating = createWebProject(projectType, doesExist.workspaceForProject);
+
+          if (creating.success === true) {
+            console.log(creating.message);
+          }
         }
         break;
       }
