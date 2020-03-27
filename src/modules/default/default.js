@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
 const { getHelp } = require('../help/help');
-const { userConfiguration } = require('../../userConfiguration/userConfiguration');
+const { userConfiguration } = require('../userConfiguration/userConfiguration');
 const { createProject } = require('../createProject/createProject');
 
 /* eslint-disable no-console */
