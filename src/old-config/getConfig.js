@@ -9,7 +9,7 @@ const pathToConfigFile = () => {
   return configFile;
 };
 
-// Get lazy-project-createion configuration data
+// Get lazy-project-creation configuration data
 const getLpcConfig = () => {
   const configData = JSON.parse(fs.readFileSync(pathToConfigFile()));
   return configData;

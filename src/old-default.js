@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
-const { createProject } = require('./createProject');
+const { createProject } = require('./old-createProject');
 
 const defaultTask = () => {
   const defaultTasks = [

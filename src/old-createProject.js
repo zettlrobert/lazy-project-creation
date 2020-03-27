@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
 
-const { createWebProject } = require('./createProjects/createWebProject');
+const { createWebProject } = require('./old-createProjects/createWebProject');
 
-const { getLpcConfig } = require('./config/getConfig');
+const { getLpcConfig } = require('./old-config/getConfig');
 
 const { projectTypes, workspaces } = getLpcConfig();
 
@@ -27,7 +27,6 @@ const doesWorkspaceForProjectExist = (workspaceForType) => {
     message: `Selected ${workspaceForType} project in workspace ${workspaceForProject}`,
   };
 };
-
 
 const createProject = () => {
   // Ask for Project Type
