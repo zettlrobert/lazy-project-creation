@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const path = require('path');
 const fs = require('fs');
 
@@ -6,7 +7,6 @@ const pathToUserConfig = path.resolve('./src/modules/userConfiguration/configura
 
 
 const getUserConfiguration = () => {
-
   const data = JSON.parse(fs.readFileSync(pathToUserConfig));
 
   console.log(data);

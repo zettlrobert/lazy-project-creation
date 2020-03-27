@@ -37,7 +37,7 @@ function createProjectPath(projectWorkspace, projectName) {
 }
 
 
-function createDirectorie(createdPath, projectWorkspace, projectName) {
+function createDirectory(createdPath, projectWorkspace, projectName) {
   return new Promise((resolve, reject) => {
     const canCreate = !fs.existsSync(createdPath);
     // console.log(`There is NO Project with the given name: ${canCreate}`);
@@ -47,7 +47,7 @@ function createDirectorie(createdPath, projectWorkspace, projectName) {
       });
       resolve(`${projectName} in workspace ${projectWorkspace}`);
     }
-    reject(new Error(`Directorie already exists.`));
+    reject(new Error(`Directory already exists.`));
   });
 }
 
@@ -59,7 +59,7 @@ const createWebProject = async (projectType, projectWorkspace) => {
     console.log(`Project Name received: ${projectName}`);
     const createdPath = await createProjectPath(projectWorkspace, projectName);
     console.log(`Path to new Project: ${createdPath}`);
-    const createdDir = await createDirectorie(createdPath, projectWorkspace, projectName);
+    const createdDir = await createDirectory(createdPath, projectWorkspace, projectName);
     console.log(`Create Directory: ${createdDir}`);
   } catch (err) {
     console.log(`Could not create because: \n ${err}`);
