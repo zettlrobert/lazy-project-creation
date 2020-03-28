@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
 const { setWorkspaces } = require('./setWorkspaces');
+const { viewWorkspaces } = require('./viewWorkspaces');
 
 
 const userConfiguration = () => {
   const userConfigurations = [
-    'Set your Workspace locations',
     'Update your Workspaces',
     'View your Configuration',
   ];
@@ -20,18 +20,18 @@ const userConfiguration = () => {
       },
     )
     .then((selection) => {
+      // access userConfiguration String
+      // console.log(selection.userConfiguration);
+
       switch (selection.userConfiguration !== null) {
-        case selection.userConfiguration === 'Set your Workspace locations':
-          console.log('Setting Workspace...');
+        case selection.userConfiguration === userConfigurations[0]:
+          console.log('Updating Workspaces...');
           setWorkspaces();
           break;
 
-        case selection.userConfiguration === 'Update your Workspaces':
-          console.log('Updating Workspaces...');
-          break;
-
-        case selection.userConfiguration === 'View your Configuration':
+        case selection.userConfiguration === userConfigurations[1]:
           console.log('Viewing Configuration...');
+          viewWorkspaces();
           break;
 
         default:
