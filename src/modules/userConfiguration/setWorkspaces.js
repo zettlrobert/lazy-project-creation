@@ -1,12 +1,11 @@
+/* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
+const { getUserConfiguration } = require('./getUserConfiguration');
 
 
-const pathToUserConfig = path.resolve('./src/modules/userConfiguration/configurationData/userConfig.json');
-
-
-const userConfiguration = JSON.parse(fs.readFileSync(pathToUserConfig));
+const userConfiguration = getUserConfiguration();
 
 
 const updateWorkspace = (workspace) => {
@@ -14,14 +13,19 @@ const updateWorkspace = (workspace) => {
     .prompt(
       {
         type: 'input',
-        name: 'workspacePath',
+        name: 'workspace',
         message: `Enter the Path to your ${workspace} Workspace (/home/username/code):`,
       },
     )
     .then((selection) => {
-      console.log(`Path to ${workspace} Workspace: ${selection.workspacePath}`);
-
+      console.log(`Path to ${workspace} Workspace, updated to: ${selection.workspace}`);
       // update config
+      userConfiguration.workspaces[workspace] = selection.workspace;
+
+      const data = JSON.stringify(userConfiguration);
+
+      fs.writeFileSync(path.resolve('./src/modules/userConfiguration/configurationData/userConfig.json'), data);
+
     });
 };
 
@@ -37,7 +41,7 @@ const whichWorkspace = () => {
       },
     )
     .then((selection) => {
-
+      // Update selected workspace
       switch (selection != null) {
         // web
         case selection.selectedWorkspace === userConfiguration.projectTypes[0]:
