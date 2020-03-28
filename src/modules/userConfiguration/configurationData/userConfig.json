@@ -5,14 +5,12 @@
     "flutter",
     "go"
   ],
-  "workspaces": [
-    {
-      "web": "/media/zerodev/test",
-      "nodejs": "/test",
-      "flutter": null,
-      "go": null
-    }
-  ],
+  "workspaces": {
+    "web": "/media/zerodev/development",
+    "nodejs": "/home/zerodev/nodejs",
+    "flutter": "",
+    "go": ""
+  },
   "gitconfig": {
     "username": null,
     "usermail": null
