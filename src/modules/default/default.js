@@ -9,7 +9,6 @@ const lpcFunctionality = () => {
     'Create Project',
     'Configure lazy-project-creation',
     'Get Help',
-    'List Supported Project Types',
   ];
 
   inquirer
@@ -23,23 +22,19 @@ const lpcFunctionality = () => {
     )
     .then((selection) => {
       switch (selection.functionality !== null) {
-        case selection.functionality === 'Create Project':
+        case selection.functionality === functionality[0]:
           console.log('Creating project...');
           createProject();
           break;
 
-        case selection.functionality === 'Configure lazy-project-creation':
+        case selection.functionality === functionality[1]:
           console.log('Configuring lpc selected...');
           userConfiguration();
           break;
 
-        case selection.functionality === 'Get Help':
+        case selection.functionality === functionality[2]:
           console.log('Help selected...');
           getHelp();
-          break;
-
-        case selection.functionality === 'List Supported Project Types':
-          console.log('List Supported Project Types');
           break;
 
         default:
