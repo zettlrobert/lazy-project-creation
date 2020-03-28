@@ -8,8 +8,7 @@ const pathToUserConfig = path.resolve('./src/modules/userConfiguration/configura
 
 const getUserConfiguration = () => {
   const data = JSON.parse(fs.readFileSync(pathToUserConfig));
-
-  console.log(data);
+  return data;
 };
 
 
