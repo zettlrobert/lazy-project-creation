@@ -1,3 +1,9 @@
+# How to use
+
+1. run lazypc anywhere on your system, configure lpc and start creating awesome projects!
+
+
+
 ## Dependencies
 * inquirer
 
@@ -7,11 +13,14 @@
 
 
 To publish
-
     $ now publish
 
+### Create Shell Command
+1. #!/usr/bin/env node
+2. Edit package.json
+   1. bin: "src/index.js"
+   1. npm link
 
-TODO
 
 ## configuration
   * configure workspaces
@@ -33,15 +42,12 @@ TODO
 
 
 ### Requiremenet:
-The personal Access Token can be used instead of username and password, as this method will be depreceated Nov 2020.
-[Generate personal access token for command line in git!](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)
+1. Nodejs
+2. Configure lpc(workspaces, used shell, ssh for git account) before using...
+3. 
 
-1. Settigns
-2. Developer settings
-3. Personal access token
-4. Generate new token
-5. Give token a descriptive name (lazy-project-configuration)
-6. Select [scopes](https://developer.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/) you want to grant this token.
-   1. repo
-7. Generate token.
-8. Copy token to Clipboard and use in lpc config
+
+
+
+TODOS:
+Implement Configuration for used Shell, to switch Directory!
