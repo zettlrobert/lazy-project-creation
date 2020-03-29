@@ -1,7 +1,8 @@
 {
-  "name": "lazy-project-creation",
+  "name": "lazypc",
+  "bin": "src/index.js",
   "version": "1.0.0",
-  "description": "First CLI Tool, creates a Project and git Repository",
+  "description": "First CLI Tool, creates a Project in specified Workspace",
   "main": "src/index.js",
   "scripts": {
     "dev": "node src/index.js",
