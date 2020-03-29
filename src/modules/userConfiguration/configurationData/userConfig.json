@@ -6,9 +6,9 @@
     "go"
   ],
   "workspaces": {
-    "web": "/media/zerodev/development",
-    "nodejs": "/home/zerodev/nodejs",
-    "flutter": "",
+    "web": "/media/zerodev/test",
+    "nodejs": "/media/zerodev/nodejs",
+    "flutter": "/media/zerodev/flutter",
     "go": ""
   },
   "gitconfig": {
