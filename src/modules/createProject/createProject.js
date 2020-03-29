@@ -1,36 +1,118 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
+const fs = require('fs');
+const process = require('process');
+const { spawn } = require('child_process');
+const { getUserConfiguration } = require('../userConfiguration/getUserConfiguration');
+
+const userConfiguration = getUserConfiguration();
+
+
+const create = (projectPath, projectType, projectName) => {
+
+  return new Promise((resolve, reject) => {
+
+    // check if project already exists
+    const projectDoesNotExist = !fs.existsSync(projectPath);
+
+    if (projectDoesNotExist) {
+      fs.mkdir(projectPath, { recursive: false }, (err) => {
+        reject(new Error(`Error creating Directory: ${err}`));
+      });
+      resolve({
+        success: true,
+        message: `${projectName} in Workspace ${projectType} succesfully created.`,
+      });
+    }
+    reject(new Error(`Project already Exists.`));
+  });
+};
+
+
+const nameAndCreateProject = (projectType) => {
+  inquirer
+    .prompt({
+      type: 'input',
+      name: 'projectName',
+      message: 'Please name your Project',
+    },
+    )
+    .then(async (input) => {
+      console.log(`Creating your ${projectType} Project: \t ${input.projectName}`);
+      // project path
+      const projectPath = `${userConfiguration.workspaces[projectType]}/${input.projectName}`;
+      try {
+        const project = await create(projectPath, projectType, input.projectName);
+        console.log(project.message);
+
+        // call and wait for success creating repo.
+
+        if (project.success) {
+          // move to project
+          // cwd current working directory.
+          console.log('Switching Directory...');
+          spawn('zsh', ['-i'], {
+            cwd: projectPath,
+            stdio: 'inherit',
+          });
+        }
+
+      } catch (err) {
+        console.log(err.name, err.message);
+      }
+
+    });
+};
+
+
+const workspaceConfiguration = (selected) => {
+  inquirer
+    .prompt({
+      type: 'list',
+      name: 'checkWorkspace',
+      message: `Is ${userConfiguration.workspaces[selected]} the correct workspace?`,
+      choices: ['yes', 'no'],
+    },
+    )
+    .then((selection) => {
+      // console.log(selection)
+      if (selection.checkWorkspace === 'yes') {
+        nameAndCreateProject(selected);
+      }
+
+      if (selection.checkWorkspace === 'no') {
+        console.log('Try again and don\'t forget update your configuration...');
+        process.exit();
+      }
+      // Name Folder
+    });
+};
 
 
 const createProject = () => {
-  const projectTypes = [
-    'import project types',
-    'import project types',
-    'import project types',
-    'import project types',
-  ];
-
+  console.log(userConfiguration);
   inquirer
     .prompt(
       {
         type: 'list',
         name: 'userConfiguration',
-        message: 'Configure lazy-project-configuration and view your settings',
-        choices: [...projectTypes],
+        message: 'Select which Project you want to create',
+        choices: [...userConfiguration.projectTypes],
       },
     )
     .then((selection) => {
       switch (selection.userConfiguration !== null) {
-        case selection.userConfiguration === 'Configure your Workspaces':
-          console.log('Configuring Workspace...');
+        case selection.userConfiguration === userConfiguration.projectTypes[0]:
+          console.log(`Creating Project ${userConfiguration.projectTypes[0]}...'`);
+          workspaceConfiguration(userConfiguration.projectTypes[0]);
           break;
 
-        case selection.userConfiguration === 'Update your Workspaces':
-          console.log('Updating Workspaces...');
+        case selection.userConfiguration === userConfiguration.projectTypes[1]:
+          console.log(`Creating Project ${userConfiguration.projectTypes[1]}...'`);
           break;
 
-        case selection.userConfiguration === 'View your Configuration':
-          console.log('Viewing Configuration...');
+        case selection.userConfiguration === userConfiguration.projectTypes[2]:
+          console.log(`Creating Project ${userConfiguration.projectTypes[2]}...'`);
           break;
 
         default:
@@ -39,6 +121,7 @@ const createProject = () => {
       }
     });
 };
+
 
 module.exports = {
   createProject,
