@@ -9,9 +9,7 @@ const userConfiguration = getUserConfiguration();
 
 
 const create = (projectPath, projectType, projectName) => {
-
   return new Promise((resolve, reject) => {
-
     // check if project already exists
     const projectDoesNotExist = !fs.existsSync(projectPath);
 
@@ -21,10 +19,10 @@ const create = (projectPath, projectType, projectName) => {
       });
       resolve({
         success: true,
-        message: `${projectName} in Workspace ${projectType} succesfully created.`,
+        message: `${projectName} in Workspace ${projectType} successfully created.`,
       });
     }
-    reject(new Error(`Project already Exists.`));
+    reject(new Error('Project already Exists.'));
   });
 };
 
@@ -35,8 +33,7 @@ const nameAndCreateProject = (projectType) => {
       type: 'input',
       name: 'projectName',
       message: 'Please name your Project',
-    },
-    )
+    })
     .then(async (input) => {
       console.log(`Creating your ${projectType} Project: \t ${input.projectName}`);
       // project path
@@ -56,11 +53,9 @@ const nameAndCreateProject = (projectType) => {
             stdio: 'inherit',
           });
         }
-
       } catch (err) {
         console.log(err.name, err.message);
       }
-
     });
 };
 
@@ -72,8 +67,7 @@ const workspaceConfiguration = (selected) => {
       name: 'checkWorkspace',
       message: `Is ${userConfiguration.workspaces[selected]} the correct workspace?`,
       choices: ['yes', 'no'],
-    },
-    )
+    })
     .then((selection) => {
       // console.log(selection)
       if (selection.checkWorkspace === 'yes') {
@@ -90,7 +84,7 @@ const workspaceConfiguration = (selected) => {
 
 
 const createProject = () => {
-  console.log(userConfiguration);
+  // console.log(userConfiguration.workspaces);
   inquirer
     .prompt(
       {
