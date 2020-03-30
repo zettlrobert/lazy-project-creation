@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const fs = require('fs');
-const path = require('path');
+const os = require('os');
 const inquirer = require('inquirer');
 const { getUserConfiguration } = require('./getUserConfiguration');
 
@@ -24,8 +24,7 @@ const updateWorkspace = (workspace) => {
 
       const data = JSON.stringify(userConfiguration);
 
-      fs.writeFileSync(path.resolve('./src/modules/userConfiguration/configurationData/userConfig.json'), data);
-
+      fs.writeFileSync(`${os.homedir()}/.config/lazy-project-creation/userConfig.json`, data);
     });
 };
 
