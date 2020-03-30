@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
-const path = require('path');
 const fs = require('fs');
+const os = require('os');
 
 
-const pathToUserConfig = path.resolve('./src/modules/userConfiguration/configurationData/userConfig.json');
+const pathToUserConfig = `${os.homedir()}/.config/lazy-project-creation/userConfig.json`;
 
 
 const getUserConfiguration = () => {
