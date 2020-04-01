@@ -1,4 +1,5 @@
 # lazy-project-creation
+## my first cli tool available as npm package on [https://www.npmjs.com/settings/zettlrobert/packages](https://www.npmjs.com/settings/zettlrobert/packages)
 
 Need to setup location for configuration file if project is installed globally with npm!
 
