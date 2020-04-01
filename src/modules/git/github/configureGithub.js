@@ -107,7 +107,7 @@ const configureGithub = async () => {
   // Update Github Configuration
   userConfiguration.gitConfig.gitHub.username = githubConfiguration.username;
 
-  userConfiguration.gitConfig.gitHub.usermail = githubConfiguration.username;
+  userConfiguration.gitConfig.gitHub.usermail = githubConfiguration.usermail;
 
   userConfiguration.gitConfig.gitHub.token = githubConfiguration.personalAccessToken;
 
