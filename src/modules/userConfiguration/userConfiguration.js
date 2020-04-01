@@ -2,12 +2,14 @@
 const inquirer = require('inquirer');
 const { setWorkspaces } = require('./setWorkspaces');
 const { viewWorkspaces } = require('./viewWorkspaces');
+const { configureGithub } = require('../git/github/configureGithub');
 
 
 const userConfiguration = () => {
   const userConfigurations = [
     'Update your Workspaces',
     'View your Configuration',
+    'Configure Github',
   ];
 
   inquirer
@@ -32,6 +34,11 @@ const userConfiguration = () => {
         case selection.userConfiguration === userConfigurations[1]:
           console.log('Viewing Configuration...');
           viewWorkspaces();
+          break;
+
+        case selection.userConfiguration === userConfigurations[2]:
+          console.log('Updating Github Configuration');
+          configureGithub();
           break;
 
         default:

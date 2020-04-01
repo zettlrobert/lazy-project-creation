@@ -1,0 +1,28 @@
+{
+    "projectTypes": [
+      "default",
+      "web",
+      "nodejs",
+      "flutter",
+      "go"
+    ],
+    "workspaces": {
+      "default": "",
+      "web": "",
+      "nodejs": "",
+      "flutter": "",
+      "go": ""
+    },
+    "gitConfig": {
+      "gitHub": {
+        "username": "",
+        "usermail": "",
+        "token": ""
+      },
+      "bitBucket": {
+        "username": "",
+        "usermail": "",
+        "token": ""
+      }
+    }
+  }

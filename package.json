@@ -12,6 +12,7 @@
   "author": "Zettl Robert",
   "license": "ISC",
   "dependencies": {
+    "@octokit/rest": "^17.1.4",
     "inquirer": "^7.1.0"
   },
   "devDependencies": {

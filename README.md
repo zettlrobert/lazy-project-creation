@@ -22,6 +22,8 @@ Need to setup location for configuration file if project is installed globally w
 2. execute by calling lazy-project-creation (if that is to long for you set an alias, unfortunately lpc is already in use)
 3. On first execution the tool creates it's configuration file on your System, that only happens the first time.
 4. CONFIGURE YOUR Workspaces, if no Workspace is set each Project will be created in your home directory.
+5. If you want to use the repository creation on github, you have to add as Personal Access Token to the configuration. It is stored only locally on your machine.
+
 
 
 #### If you have suggestions or something is not working as expected let me know!
@@ -29,6 +31,7 @@ Need to setup location for configuration file if project is installed globally w
 ### Planned Features
 * git integration
   * automatically create a repository named like the project
+  * after github is api is implemented, bitbucket, gitlab...
 
 * create basic files to start coding right away
   * (web: package.json, index.js...)

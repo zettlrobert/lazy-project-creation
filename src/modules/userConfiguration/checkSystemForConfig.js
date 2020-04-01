@@ -7,22 +7,33 @@ const fs = require('fs');
 const checkSystemForConfig = () => {
   const defaultHomePath = `${os.homedir()}`;
 
+
   const configJSON = {
     "projectTypes": [
+      "default",
       "web",
       "nodejs",
       "flutter",
       "go"
     ],
     "workspaces": {
+      "default": `${defaultHomePath}`,
       "web": `${defaultHomePath}`,
       "nodejs": `${defaultHomePath}`,
       "flutter": `${defaultHomePath}`,
       "go": `${defaultHomePath}`
     },
-    "gitconfig": {
-      "username": null,
-      "usermail": null
+    "gitConfig": {
+      "gitHub": {
+        "username": "",
+        "usermail": "",
+        "token": ""
+      },
+      "bitBucket": {
+        "username": "",
+        "usermail": "",
+        "token": ""
+      }
     }
   }
 

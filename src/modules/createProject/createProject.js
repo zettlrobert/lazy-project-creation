@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
 const fs = require('fs');
+const os = require('os');
 const process = require('process');
 const { spawn } = require('child_process');
 const { getUserConfiguration } = require('../userConfiguration/getUserConfiguration');
@@ -27,7 +28,7 @@ const create = (projectPath, projectType, projectName) => {
 };
 
 
-const nameAndCreateProject = (projectType) => {
+const nameAndCreateProject = async (projectType) => {
   inquirer
     .prompt({
       type: 'input',
@@ -48,11 +49,16 @@ const nameAndCreateProject = (projectType) => {
           // move to project
           // cwd current working directory.
           console.log('Switching Directory...');
-          spawn('zsh', ['-i'], {
+          spawn(`${os.userInfo().shell}`, ['-i'], {
             cwd: projectPath,
             stdio: 'inherit',
           });
+
+          // Ask for Online Repo
+
         }
+
+
       } catch (err) {
         console.log(err.name, err.message);
       }
