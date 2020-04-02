@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const { Octokit } = require("@octokit/rest");
 const inquirer = require('inquirer');
 const { getUserConfiguration } = require('../../userConfiguration/getUserConfiguration');
@@ -66,7 +67,7 @@ const create = async () => {
     });
 
     resolve({ status: true, message: 'Repository successfully created!' });
-  })
+  });
 };
 
 const createGithubRepository = async (projectName, projectPath) => {
@@ -85,12 +86,8 @@ const createGithubRepository = async (projectName, projectPath) => {
     console.log(projectCreated.message);
 
     if (projectCreated.status) {
-
-
       console.log('Locally...');
     }
-
-
   } catch (err) {
     console.log(err);
   }
