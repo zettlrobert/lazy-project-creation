@@ -67,7 +67,7 @@ const getGithubPersonalAccessToken = () => {
       })
       .then((answer) => {
         if (answer.personalAccessToken === '') {
-          const err = new Error('You didn\'t enter a personal access token');
+          const err = new Error('You didn\'t enter a personal access token, keeping current token');
           reject(err);
         }
 
@@ -85,6 +85,7 @@ const configureGithub = async () => {
   try {
     const githubUsername = await getGithubUserName();
     console.log(githubUsername);
+    userConfiguration.gitConfig.gitHub.username = githubConfiguration.username;
   } catch (err) {
     console.log(err.message);
   }
@@ -93,6 +94,7 @@ const configureGithub = async () => {
   try {
     const githubMail = await getGithubMail();
     console.log(githubMail);
+    userConfiguration.gitConfig.gitHub.usermail = githubConfiguration.usermail;
   } catch (err) {
     console.log(err.message);
   }
@@ -100,16 +102,14 @@ const configureGithub = async () => {
   try {
     const githubToken = await getGithubPersonalAccessToken();
     console.log(githubToken);
+    if (githubToken === 'You didn\'t enter a personal access token, keeping current token') {
+      console.log('Make sure you set an personal accesss token...')
+    } else {
+      userConfiguration.gitConfig.gitHub.token = githubConfiguration.personalAccessToken;
+    }
   } catch (err) {
     console.log(err.message);
   }
-
-  // Update Github Configuration
-  userConfiguration.gitConfig.gitHub.username = githubConfiguration.username;
-
-  userConfiguration.gitConfig.gitHub.usermail = githubConfiguration.usermail;
-
-  userConfiguration.gitConfig.gitHub.token = githubConfiguration.personalAccessToken;
 
 
   const data = JSON.stringify(userConfiguration);
@@ -119,6 +119,7 @@ const configureGithub = async () => {
   console.log('Github configuration update successful');
 };
 
+
 module.exports = {
   configureGithub,
-}
+};
