@@ -5,6 +5,7 @@ const os = require('os');
 const process = require('process');
 const { spawn } = require('child_process');
 const { getUserConfiguration } = require('../userConfiguration/getUserConfiguration');
+const { createGithubRepository } = require('../git/github/createGithubRepository');
 
 
 const userConfiguration = getUserConfiguration();
@@ -29,7 +30,7 @@ const create = (projectPath, projectType, projectName) => {
 };
 
 
-const askGithubRepoCreate = () => {
+const askGithubRepoCreate = (projectName, projectPath) => {
   inquirer
     .prompt({
       type: 'list',
@@ -38,7 +39,9 @@ const askGithubRepoCreate = () => {
       choices: ['yes', 'no'],
     })
     .then((answer) => {
-      console.log(answer.createGithubRepo);
+      if (answer.createGithubRepo === 'yes') {
+        createGithubRepository(projectName, projectPath);
+      }
     });
 };
 
@@ -61,7 +64,7 @@ const nameAndCreateProject = async (projectType) => {
         // call and wait for success creating repo.
 
         if (project.success) {
-          askGithubRepoCreate();
+          askGithubRepoCreate(input.projectName, projectPath);
           // move to project
           // cwd current working directory.
           // console.log(`Switching Directory to ${projectPath}...`);
