@@ -1,9 +1,7 @@
 /* eslint-disable no-console */
 const inquirer = require('inquirer');
 const fs = require('fs');
-const os = require('os');
 const process = require('process');
-const { spawn } = require('child_process');
 const { getUserConfiguration } = require('../userConfiguration/getUserConfiguration');
 const { createGithubRepository } = require('../git/github/createGithubRepository');
 
@@ -65,17 +63,7 @@ const nameAndCreateProject = async (projectType) => {
 
         if (project.success) {
           askGithubRepoCreate(input.projectName, projectPath);
-          // move to project
-          // cwd current working directory.
-          // console.log(`Switching Directory to ${projectPath}...`);
-          // const switched = await spawn(`${os.userInfo().shell}`, ['-i'], {
-          //   cwd: projectPath,
-          //   stdio: 'inherit',
-          // });
-
-          // Ask for Online Repo
         }
-
       } catch (err) {
         console.log(err.name, err.message);
       }
