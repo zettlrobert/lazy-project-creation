@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const inquirer = require('inquirer');
 const fs = require('fs');
 const os = require('os');
@@ -81,7 +82,6 @@ const getGithubPersonalAccessToken = () => {
 
 
 const configureGithub = async () => {
-
   try {
     const githubUsername = await getGithubUserName();
     console.log(githubUsername);
@@ -89,7 +89,6 @@ const configureGithub = async () => {
   } catch (err) {
     console.log(err.message);
   }
-
 
   try {
     const githubMail = await getGithubMail();
@@ -103,7 +102,7 @@ const configureGithub = async () => {
     const githubToken = await getGithubPersonalAccessToken();
     console.log(githubToken);
     if (githubToken === 'You didn\'t enter a personal access token, keeping current token') {
-      console.log('Make sure you set an personal accesss token...')
+      console.log('Make sure you set an personal accesss token...');
     } else {
       userConfiguration.gitConfig.gitHub.token = githubConfiguration.personalAccessToken;
     }
