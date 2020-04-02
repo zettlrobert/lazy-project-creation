@@ -6,6 +6,7 @@ const process = require('process');
 const { spawn } = require('child_process');
 const { getUserConfiguration } = require('../userConfiguration/getUserConfiguration');
 
+
 const userConfiguration = getUserConfiguration();
 
 
@@ -28,6 +29,20 @@ const create = (projectPath, projectType, projectName) => {
 };
 
 
+const askGithubRepoCreate = () => {
+  inquirer
+    .prompt({
+      type: 'list',
+      name: 'createGithubRepo',
+      message: 'Do you want to create a Github Repository and sync it with your local project?',
+      choices: ['yes', 'no'],
+    })
+    .then((answer) => {
+      console.log(answer.createGithubRepo);
+    });
+};
+
+
 const nameAndCreateProject = async (projectType) => {
   inquirer
     .prompt({
@@ -46,18 +61,17 @@ const nameAndCreateProject = async (projectType) => {
         // call and wait for success creating repo.
 
         if (project.success) {
+          askGithubRepoCreate();
           // move to project
           // cwd current working directory.
-          console.log('Switching Directory...');
-          spawn(`${os.userInfo().shell}`, ['-i'], {
-            cwd: projectPath,
-            stdio: 'inherit',
-          });
+          // console.log(`Switching Directory to ${projectPath}...`);
+          // const switched = await spawn(`${os.userInfo().shell}`, ['-i'], {
+          //   cwd: projectPath,
+          //   stdio: 'inherit',
+          // });
 
           // Ask for Online Repo
-
         }
-
 
       } catch (err) {
         console.log(err.name, err.message);
@@ -104,15 +118,27 @@ const createProject = () => {
       switch (selection.userConfiguration !== null) {
         case selection.userConfiguration === userConfiguration.projectTypes[0]:
           console.log(`Creating Project ${userConfiguration.projectTypes[0]}...'`);
-          workspaceConfiguration(userConfiguration.projectTypes[0]);
+          workspaceConfiguration(selection.userConfiguration);
           break;
 
         case selection.userConfiguration === userConfiguration.projectTypes[1]:
           console.log(`Creating Project ${userConfiguration.projectTypes[1]}...'`);
+          workspaceConfiguration(selection.userConfiguration);
           break;
 
         case selection.userConfiguration === userConfiguration.projectTypes[2]:
           console.log(`Creating Project ${userConfiguration.projectTypes[2]}...'`);
+          workspaceConfiguration(selection.userConfiguration);
+          break;
+
+        case selection.userConfiguration === userConfiguration.projectTypes[3]:
+          console.log(`Creating Project ${userConfiguration.projectTypes[3]}...'`);
+          workspaceConfiguration(selection.userConfiguration);
+          break;
+
+        case selection.userConfiguration === userConfiguration.projectTypes[4]:
+          console.log(`Creating Project ${userConfiguration.projectTypes[4]}...'`);
+          workspaceConfiguration(selection.userConfiguration);
           break;
 
         default:
