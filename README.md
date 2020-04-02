@@ -1,12 +1,29 @@
 # lazy-project-creation
-## my first cli tool available as npm package on [https://www.npmjs.com/settings/zettlrobert/packages](https://www.npmjs.com/settings/zettlrobert/packages)
+# $ npm i -g lazy-project-creation
 
-Need to setup location for configuration file if project is installed globally with npm!
+lazy-project-creation creates a local project in a workspace of your choice, in addition it will initialize a local repository, and create a repository with the same name and basic configuration after your choosing on github.
+It will then proceed to create a .gitignore, add the remote, add your files,and create and inital commit wich gets pushed, if you choose to do so.
 
-1. configure lpc 
-   1. setup your custom workspaces (project locations)
-2. run lazy-project-creation anywhere on your system.
+**The basic functionality as stated will be available in April. I am currently working on the github integration and it is nearly done!**
 
+## Needs to be installed globally, works on Unix based Systems!!!
+
+### lazy-project-creation is my first cli tool provided as npm package: [https://www.npmjs.com/settings/zettlrobert/packages](https://www.npmjs.com/package/lazy-project-creation)
+
+
+## Setup and Configuration
+1. Install it globally!
+1. on first run it will setup the needed configuration files, call it again!
+1. lazy-project-configuration uses a local configuration file, so your data stays with you!
+1. you need to configure and setup lazy-project-creation before using it to create projects
+1. the default workspace is your home directory
+1. follow the configuration steps provided by lazy-project-creation  
+1. use a complete, absolute path for each workspace
+1. to create a github repository and link it with your local project you need to provide a personal access token, it will only be stored in the config file on your system.
+
+### Basic Information
+* the configuration file is located ~/.config/lazy-project-creation/userConfig.json
+* the default workspace location is ~/
 
 ## System Requirements
 1. Nodejs
@@ -15,24 +32,16 @@ Need to setup location for configuration file if project is installed globally w
 
 ## How to install
 
-        $ npm i -g lazy-project-creation
+      $ npm i -g lazy-project-creation
 
 
-### How to use?
-1. Install ne module globally.
-2. execute by calling lazy-project-creation (if that is to long for you set an alias, unfortunately lpc is already in use)
-3. On first execution the tool creates it's configuration file on your System, that only happens the first time.
-4. CONFIGURE YOUR Workspaces, if no Workspace is set each Project will be created in your home directory.
-5. If you want to use the repository creation on github, you have to add as Personal Access Token to the configuration. It is stored only locally on your machine.
-
-
-
-#### If you have suggestions or something is not working as expected let me know!
+#### [If you have suggestions or something is not working as expected let me know!](https://zerodev.dev/contact)
 
 ### Planned Features
-* git integration
+* github integration
   * automatically create a repository named like the project
-  * after github is api is implemented, bitbucket, gitlab...
+  * after github integration is implemented, bitbucket, gitlab will follow...
 
-* create basic files to start coding right away
-  * (web: package.json, index.js...)
+* Windows integration(maybe)
+
+* my choose to rewrite in golang as soon as i am more familiar with that language 
