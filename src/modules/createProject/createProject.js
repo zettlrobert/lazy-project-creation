@@ -9,23 +9,21 @@ const { createGithubRepository } = require('../git/github/createGithubRepository
 const userConfiguration = getUserConfiguration();
 
 
-const create = (projectPath, projectType, projectName) => {
-  return new Promise((resolve, reject) => {
-    // check if project already exists
-    const projectDoesNotExist = !fs.existsSync(projectPath);
+const create = (projectPath, projectType, projectName) => new Promise((resolve, reject) => {
+  // check if project already exists
+  const projectDoesNotExist = !fs.existsSync(projectPath);
 
-    if (projectDoesNotExist) {
-      fs.mkdir(projectPath, { recursive: false }, (err) => {
-        reject(new Error(`Error creating Directory: ${err}`));
-      });
-      resolve({
-        success: true,
-        message: `${projectName} in Workspace ${projectType} successfully created.`,
-      });
-    }
-    reject(new Error('Project already Exists.'));
-  });
-};
+  if (projectDoesNotExist) {
+    fs.mkdir(projectPath, { recursive: false }, (err) => {
+      reject(new Error(`Error creating Directory: ${err}`));
+    });
+    resolve({
+      success: true,
+      message: `${projectName} in Workspace ${projectType} successfully created.`,
+    });
+  }
+  reject(new Error('Project already Exists.'));
+});
 
 
 const askGithubRepoCreate = (projectName, projectPath) => {

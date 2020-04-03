@@ -12,73 +12,67 @@ const githubConfiguration = {
 };
 
 
-const getGithubUserName = () => {
-  return new Promise((resolve, reject) => {
-    inquirer
-      .prompt({
-        type: 'input',
-        name: 'username',
-        message: 'Please enter your github username',
-      })
-      .then((answer) => {
-        if (answer.username === '') {
-          const err = new Error('No github username set, try again...');
-          reject(err);
-        }
+const getGithubUserName = () => new Promise((resolve, reject) => {
+  inquirer
+    .prompt({
+      type: 'input',
+      name: 'username',
+      message: 'Please enter your github username',
+    })
+    .then((answer) => {
+      if (answer.username === '') {
+        const err = new Error('No github username set, try again...');
+        reject(err);
+      }
 
-        if (answer.username !== '') {
-          githubConfiguration.username = answer.username;
-          resolve(`Github username:\t${answer.username}\tset successfully`);
-        }
-      });
-  });
-};
+      if (answer.username !== '') {
+        githubConfiguration.username = answer.username;
+        resolve(`Github username:\t${answer.username}\tset successfully`);
+      }
+    });
+});
 
 
-const getGithubMail = () => {
-  return new Promise((resolve, reject) => {
-    inquirer
-      .prompt({
-        type: 'input',
-        name: 'usermail',
-        message: 'Please enter your github usermail',
-      })
-      .then((answer) => {
-        if (answer.usermail === '') {
-          const err = new Error('No github usermail set, try again...');
-          reject(err);
-        }
+const getGithubMail = () => new Promise((resolve, reject) => {
+  inquirer
+    .prompt({
+      type: 'input',
+      name: 'usermail',
+      message: 'Please enter your github usermail',
+    })
+    .then((answer) => {
+      if (answer.usermail === '') {
+        const err = new Error('No github usermail set, try again...');
+        reject(err);
+      }
 
-        if (answer.usermail !== '') {
-          githubConfiguration.usermail = answer.usermail;
-          resolve(`Github usermail:\t${answer.usermail}\tset successfully`);
-        }
-      });
-  });
-};
+      if (answer.usermail !== '') {
+        githubConfiguration.usermail = answer.usermail;
+        resolve(`Github usermail:\t${answer.usermail}\tset successfully`);
+      }
+    });
+});
 
 
-const getGithubPersonalAccessToken = () => {
-  return new Promise((resolve, reject) => {
-    inquirer
-      .prompt({
-        type: 'input',
-        name: 'personalAccessToken',
-        message: 'Please enter your personal access token for github',
-      })
-      .then((answer) => {
-        if (answer.personalAccessToken === '') {
-          const err = new Error('You didn\'t enter a personal access token, keeping current token');
-          reject(err);
-        }
+const getGithubPersonalAccessToken = () => new Promise((resolve, reject) => {
+  inquirer
+    .prompt({
+      type: 'input',
+      name: 'personalAccessToken',
+      message: 'Please enter your personal access token for github',
+    })
+    .then((answer) => {
+      if (answer.personalAccessToken === '') {
+        const err = new Error('You didn\'t enter a personal access token, keeping current token');
+        reject(err);
+      }
 
-        if (answer.personalAccessToken !== '') {
-          githubConfiguration.personalAccessToken = answer.personalAccessToken;
-          resolve('Personal access token set successfully...');
-        }
-      });
-  });
-};
+      if (answer.personalAccessToken !== '') {
+        githubConfiguration.personalAccessToken = answer.personalAccessToken;
+        resolve('Personal access token set successfully...');
+      }
+    });
+});
 
 
 const configureGithub = async () => {
@@ -102,7 +96,7 @@ const configureGithub = async () => {
     const githubToken = await getGithubPersonalAccessToken();
     console.log(githubToken);
     if (githubToken === 'You didn\'t enter a personal access token, keeping current token') {
-      console.log('Make sure you set an personal accesss token...');
+      console.log('Make sure you set an personal access token...');
     } else {
       userConfiguration.gitConfig.gitHub.token = githubConfiguration.personalAccessToken;
     }
