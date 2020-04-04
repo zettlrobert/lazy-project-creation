@@ -1,8 +1,10 @@
-const os = require('os');
-const fs = require('fs');
+/* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 /* eslint-disable quote-props */
 /* eslint-disable no-console */
+const os = require('os');
+const fs = require('fs');
+
 
 const checkSystemForConfig = () => {
   const defaultHomePath = `${os.homedir()}`;
@@ -61,8 +63,8 @@ const checkSystemForConfig = () => {
 
   if (configFileExists) {
     console.log('Configuration file found, proceeding...');
-    return true;
   }
+  return true;
 };
 
 
