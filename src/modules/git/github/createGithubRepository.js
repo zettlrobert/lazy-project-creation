@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 const { Octokit } = require('@octokit/rest');
+const { spawn } = require('child_process');
 const inquirer = require('inquirer');
 const { getUserConfiguration } = require('../../userConfiguration/getUserConfiguration');
+const { createLocalRepository } = require('../createLocalRepository');
 
 
 const userConfiguration = getUserConfiguration();
@@ -84,13 +86,17 @@ const createGithubRepository = async (projectName, projectPath) => {
     if (projectCreated.status) {
       // create locally!
       console.log('Locally...');
+      const local = await createLocalRepository(projectName, projectPath);
 
+      // Switch to Project Folder
+      if (local.success) {
+        console.log(local.message);
 
-
-
-
-
-
+        spawn(process.env.SHELL, {
+          cwd: projectPath,
+          stdio: 'inherit',
+        });
+      }
     }
   } catch (err) {
     console.log(err);
