@@ -2,7 +2,7 @@
 # $ npm i -g lazy-project-creation
 
 lazy-project-creation creates a local project in a workspace of your choice, in addition it will initialize a local repository, and create a repository with the same name and basic configuration after your choosing on github.
-It will then proceed to create a .gitignore, add the remote, add your files,and create and inital commit wich gets pushed, if you choose to do so.
+It will then proceed to create a .gitignore, add the remote, add your files,and create and initial commit which gets pushed, if you choose to do so.
 
 **The basic functionality as stated will be available in April. I am currently working on the github integration and it is nearly done!**
 
@@ -16,6 +16,7 @@ It will then proceed to create a .gitignore, add the remote, add your files,and 
 1. on first run it will setup the needed configuration files, call it again!
 1. lazy-project-configuration uses a local configuration file, so your data stays with you!
 1. you need to configure and setup lazy-project-creation before using it to create projects
+   1. you can edit file manually but it is recommended to use the tool (~/.config/lazy-project-creation/userConfig.json) 
 1. the default workspace is your home directory
 1. follow the configuration steps provided by lazy-project-creation  
 1. use a complete, absolute path for each workspace
