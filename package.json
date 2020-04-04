@@ -1,13 +1,17 @@
 {
   "name": "lazy-project-creation",
   "bin": "src/index.js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "CLI Tool, creates Projects in specified Workspaces and later on will create an online repository with the same name.",
   "main": "src/index.js",
   "scripts": {
     "dev": "node src/index.js",
     "test": "node src/test.js",
     "lint": "eslint src/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zettlrobert/lazy-project-creation"
   },
   "author": "Zettl Robert",
   "license": "ISC",
