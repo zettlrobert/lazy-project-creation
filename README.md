@@ -1,6 +1,8 @@
 # lazy-project-creation
 # $ npm i -g lazy-project-creation
 
+![cover](docs/cover.png)
+
 lazy-project-creation creates a local project in a workspace of your choice.
 In addition it will initialize a local repository, and create a remote github repository with the same name and after your configuration.
 It will then proceed to create a .gitignore, add the remote, add files, setup an initial commit which it finally pushes.
@@ -26,13 +28,13 @@ It will then proceed to create a .gitignore, add the remote, add files, setup an
 
 
 ## Call it
-![call](presentation/call.png)
+![call](docs/call.png)
 
 ## Configure once (unless you want to change configuration)
-![call](presentation/configure.png)
+![call](docs/configure.png)
 
 ## Enjoy
-![call](presentation/use.png)
+![call](docs/use.png)
 
 
 ### Basic Information
