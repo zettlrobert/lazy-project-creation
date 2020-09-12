@@ -20,7 +20,6 @@ const lazyProjectCreation = new Octokit({
   auth: gitHubConfig.token,
 });
 
-
 const createRepository = () => {
   lazyProjectCreation.repos.createForAuthenticatedUser({
     name: project.projectName,
@@ -29,22 +28,14 @@ const createRepository = () => {
   });
 };
 
-
 // localRepoAndPush();
-
-
-
-
-
-
 const testSwitch = async () => {
-
-  console.log(process.env.SHELL);
+  process.stdout.write(process.env.SHELL);
 
   spawn(process.env.SHELL, {
     cwd: '/home/zettlrobert',
     stdio: 'inherit',
   });
-
 };
+
 testSwitch();

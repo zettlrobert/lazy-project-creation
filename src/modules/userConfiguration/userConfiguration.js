@@ -23,26 +23,26 @@ const userConfiguration = () => {
     )
     .then((selection) => {
       // access userConfiguration String
-      // console.log(selection.userConfiguration);
+      // process.stdout.write(selection.userConfiguration);
 
       switch (selection.userConfiguration !== null) {
         case selection.userConfiguration === userConfigurations[0]:
-          console.log('Updating Workspaces...');
+          process.stdout.write('Updating Workspaces...');
           setWorkspaces();
           break;
 
         case selection.userConfiguration === userConfigurations[1]:
-          console.log('Viewing Configuration...');
+          process.stdout.write('Viewing Configuration...');
           viewWorkspaces();
           break;
 
         case selection.userConfiguration === userConfigurations[2]:
-          console.log('Updating Github Configuration');
+          process.stdout.write('Updating Github Configuration');
           configureGithub();
           break;
 
         default:
-          console.log('DEFAULT');
+          process.stdout.write('DEFAULT');
           break;
       }
     });

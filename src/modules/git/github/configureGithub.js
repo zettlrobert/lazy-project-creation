@@ -78,30 +78,30 @@ const getGithubPersonalAccessToken = () => new Promise((resolve, reject) => {
 const configureGithub = async () => {
   try {
     const githubUsername = await getGithubUserName();
-    console.log(githubUsername);
+    process.stdout.write(githubUsername);
     userConfiguration.gitConfig.gitHub.username = githubConfiguration.username;
   } catch (err) {
-    console.log(err.message);
+    process.stdout.write(err.message);
   }
 
   try {
     const githubMail = await getGithubMail();
-    console.log(githubMail);
+    process.stdout.write(githubMail);
     userConfiguration.gitConfig.gitHub.usermail = githubConfiguration.usermail;
   } catch (err) {
-    console.log(err.message);
+    process.stdout.write(err.message);
   }
 
   try {
     const githubToken = await getGithubPersonalAccessToken();
-    console.log(githubToken);
+    process.stdout.write(githubToken);
     if (githubToken === 'You didn\'t enter a personal access token, keeping current token') {
-      console.log('Make sure you set an personal access token...');
+      process.stdout.write('Make sure you set an personal access token...');
     } else {
       userConfiguration.gitConfig.gitHub.token = githubConfiguration.personalAccessToken;
     }
   } catch (err) {
-    console.log(err.message);
+    process.stdout.write(err.message);
   }
 
 
@@ -109,7 +109,7 @@ const configureGithub = async () => {
 
   fs.writeFileSync(`${os.homedir()}/.config/lazy-project-creation/userConfig.json`, data);
 
-  console.log('Github configuration update successful');
+  process.stdout.write('Github configuration update successful');
 };
 
 

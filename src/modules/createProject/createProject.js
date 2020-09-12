@@ -50,12 +50,12 @@ const nameAndCreateProject = async (projectType) => {
       message: 'Please name your Project',
     })
     .then(async (input) => {
-      console.log(`Creating your ${projectType} Project: \t ${input.projectName}`);
+      process.stdout.write(`Creating your ${projectType} Project: \t ${input.projectName}`);
       // project path
       const projectPath = `${userConfiguration.workspaces[projectType]}/${input.projectName}`;
       try {
         const project = await create(projectPath, projectType, input.projectName);
-        console.log(project.message);
+        process.stdout.write(project.message);
 
         // call and wait for success creating repo.
 
@@ -63,7 +63,7 @@ const nameAndCreateProject = async (projectType) => {
           askGithubRepoCreate(input.projectName, projectPath);
         }
       } catch (err) {
-        console.log(err.name, err.message);
+        process.stdout.write(err.name, err.message);
       }
     });
 };
@@ -78,13 +78,13 @@ const workspaceConfiguration = (selected) => {
       choices: ['yes', 'no'],
     })
     .then((selection) => {
-      // console.log(selection)
+      // process.stdout.write(selection)
       if (selection.checkWorkspace === 'yes') {
         nameAndCreateProject(selected);
       }
 
       if (selection.checkWorkspace === 'no') {
-        console.log('Try again and don\'t forget update your configuration...');
+        process.stdout.write('Try again and don\'t forget update your configuration...');
         process.exit();
       }
       // Name Folder
@@ -93,7 +93,7 @@ const workspaceConfiguration = (selected) => {
 
 
 const createProject = () => {
-  // console.log(userConfiguration.workspaces);
+  // process.stdout.write(userConfiguration.workspaces);
   inquirer
     .prompt(
       {
@@ -106,32 +106,32 @@ const createProject = () => {
     .then((selection) => {
       switch (selection.userConfiguration !== null) {
         case selection.userConfiguration === userConfiguration.projectTypes[0]:
-          console.log(`Creating Project ${userConfiguration.projectTypes[0]}...'`);
+          process.stdout.write(`Creating Project ${userConfiguration.projectTypes[0]}...'`);
           workspaceConfiguration(selection.userConfiguration);
           break;
 
         case selection.userConfiguration === userConfiguration.projectTypes[1]:
-          console.log(`Creating Project ${userConfiguration.projectTypes[1]}...'`);
+          process.stdout.write(`Creating Project ${userConfiguration.projectTypes[1]}...'`);
           workspaceConfiguration(selection.userConfiguration);
           break;
 
         case selection.userConfiguration === userConfiguration.projectTypes[2]:
-          console.log(`Creating Project ${userConfiguration.projectTypes[2]}...'`);
+          process.stdout.write(`Creating Project ${userConfiguration.projectTypes[2]}...'`);
           workspaceConfiguration(selection.userConfiguration);
           break;
 
         case selection.userConfiguration === userConfiguration.projectTypes[3]:
-          console.log(`Creating Project ${userConfiguration.projectTypes[3]}...'`);
+          process.stdout.write(`Creating Project ${userConfiguration.projectTypes[3]}...'`);
           workspaceConfiguration(selection.userConfiguration);
           break;
 
         case selection.userConfiguration === userConfiguration.projectTypes[4]:
-          console.log(`Creating Project ${userConfiguration.projectTypes[4]}...'`);
+          process.stdout.write(`Creating Project ${userConfiguration.projectTypes[4]}...'`);
           workspaceConfiguration(selection.userConfiguration);
           break;
 
         default:
-          console.log('DEFAULT');
+          process.stdout.write('DEFAULT');
           break;
       }
     });

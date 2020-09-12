@@ -11,6 +11,6 @@ exports.getHelp = () => {
     You have to configure lazy-project-creation before you can start using it. \n
   `;
 
-  console.log(green, helpWelcome);
-  console.log(reset, helpConfig);
+  process.stdout.write(green, helpWelcome);
+  process.stdout.write(reset, helpConfig);
 };

@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 
-
 const createGithubRepository = () => {
   return new Promise((resolve, reject) => {
     inquirer
@@ -12,14 +11,13 @@ const createGithubRepository = () => {
       })
       .then((answer) => {
         if (answer.wantToCreateGithubRepository === 'no') {
-          console.log('Have fun with your project...');
+          process.stdout.write('Have fun with your project...');
         }
 
         resolve({ answer: answer.wantToCreateGithubRepository });
       });
   });
 };
-
 
 const githubRepositoryDescription = (projectName) => {
   return new Promise((resolve, reject) => {
@@ -32,15 +30,14 @@ const githubRepositoryDescription = (projectName) => {
       .then((answer) => {
         resolve({ answer: answer.githubRepositoryDescription });
       });
-  })
+  });
 };
-
 
 const githubRepository = async (projectName) => {
   const githubProjectConfiguration = {
     username: '',
     token: '',
-    projectName: projectName,
+    projectName,
     projectDescription: '',
     private: '',
   };
@@ -48,16 +45,14 @@ const githubRepository = async (projectName) => {
   const shouldCreate = await createGithubRepository();
 
   if (shouldCreate.answer === 'yes') {
-    console.log('Collecting information to generate github repository...');
+    process.stdout.write('Collecting information to generate github repository...');
 
     const projectDescription = await githubRepositoryDescription();
     githubProjectConfiguration.projectDescription = projectDescription.answer;
-
-
   }
 
 
-  console.log(githubProjectConfiguration);
+  process.stdout.write(githubProjectConfiguration);
 };
 
 

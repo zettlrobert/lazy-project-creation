@@ -53,16 +53,16 @@ const checkSystemForConfig = () => {
   if (!configExists) {
     fs.mkdirSync(configPath);
 
-    console.log('\tlazy-project-creation configuration directory created: $HOME/.config/lazy-project-creation \n');
+    process.stdout.write('\tlazy-project-creation configuration directory created: $HOME/.config/lazy-project-creation \n');
   }
 
   if (!configFileExists) {
     fs.writeFileSync(configFile, JSON.stringify(configJSON));
-    console.log('\tlazy-project-creation configuration file created, please run again to configure and use the tool. Default Workspace is your: ~/ \n\n');
+    process.stdout.write('\tlazy-project-creation configuration file created, please run again to configure and use the tool. Default Workspace is your: ~/ \n\n');
   }
 
   if (configFileExists) {
-    console.log('Configuration file found, proceeding...');
+    process.stdout.write('Configuration file found, proceeding...');
   }
   return true;
 };

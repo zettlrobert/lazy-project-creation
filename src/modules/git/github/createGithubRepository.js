@@ -24,7 +24,7 @@ const getRepoDescription = () => new Promise((resolve, reject) => {
       message: 'Please enter a Repository description or leave blank',
     })
     .then((input) => {
-      console.log(`Your repository description: ${input.repositoryDescription}`);
+      process.stdout.write(`Your repository description: ${input.repositoryDescription}`);
       resolve({ success: true, message: 'Repository description set...', description: input.repositoryDescription });
     });
 });
@@ -81,16 +81,16 @@ const createGithubRepository = async (projectName, projectPath) => {
 
     // create
     const projectCreated = await create();
-    console.log(projectCreated.message);
+    process.stdout.write(projectCreated.message);
 
     if (projectCreated.status) {
       // create locally!
-      console.log('Locally...');
+      process.stdout.write('Locally...');
       const local = await createLocalRepository(projectName, projectPath);
 
       // Switch to Project Folder
       if (local.success) {
-        console.log(local.message);
+        process.stdout.write(local.message);
 
         spawn(process.env.SHELL, {
           cwd: projectPath,
@@ -99,7 +99,7 @@ const createGithubRepository = async (projectName, projectPath) => {
       }
     }
   } catch (err) {
-    console.log(err);
+    process.stdout.write(err);
   }
 };
 

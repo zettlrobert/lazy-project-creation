@@ -18,7 +18,7 @@ const updateWorkspace = (workspace) => {
       },
     )
     .then((selection) => {
-      console.log(`Path to ${workspace} Workspace, updated to: ${selection.workspace}`);
+      process.stdout.writ(`Path to ${workspace} Workspace, updated to: ${selection.workspace}`);
       // update config
       userConfiguration.workspaces[workspace] = selection.workspace;
 
@@ -44,35 +44,35 @@ const whichWorkspace = () => {
       switch (selection != null) {
         // web
         case selection.selectedWorkspace === userConfiguration.projectTypes[0]:
-          console.log(`Updating ${userConfiguration.projectTypes[0]} Workspace...`);
+          process.stdout.writ(`Updating ${userConfiguration.projectTypes[0]} Workspace...`);
           // Update Logic
           updateWorkspace(userConfiguration.projectTypes[0]);
           break;
 
         // nodejs
         case selection.selectedWorkspace === userConfiguration.projectTypes[1]:
-          console.log(`Updating ${userConfiguration.projectTypes[1]} Workspace...`);
+          process.stdout.writ(`Updating ${userConfiguration.projectTypes[1]} Workspace...`);
           // Update Logic
           updateWorkspace(userConfiguration.projectTypes[1]);
           break;
 
         // flutter
         case selection.selectedWorkspace === userConfiguration.projectTypes[2]:
-          console.log(`Updating ${userConfiguration.projectTypes[2]} Workspace...`);
+          process.stdout.writ(`Updating ${userConfiguration.projectTypes[2]} Workspace...`);
           // Update Logic
           updateWorkspace(userConfiguration.projectTypes[2]);
           break;
 
         // go
         case selection.selectedWorkspace === userConfiguration.projectTypes[3]:
-          console.log(`Updating ${userConfiguration.projectTypes[3]} Workspace...`);
+          process.stdout.writ(`Updating ${userConfiguration.projectTypes[3]} Workspace...`);
           // Update Logic
           updateWorkspace(userConfiguration.projectTypes[3]);
           break;
 
         // do nothing and exit
         default:
-          console.log('Workspaces not changing...');
+          process.stdout.writ('Workspaces not changing...');
           break;
       }
     });

@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const { getHelp } = require('../help/help');
 const { userConfiguration } = require('../userConfiguration/userConfiguration');
 const { createProject } = require('../createProject/createProject');
+const { exit } = require('../default/exit.js');
 
 /* eslint-disable no-console */
 const lpcFunctionality = () => {
@@ -9,6 +10,7 @@ const lpcFunctionality = () => {
     'Create Project',
     'Configure lazy-project-creation',
     'Get Help',
+    'Exit',
   ];
 
   inquirer
@@ -23,22 +25,27 @@ const lpcFunctionality = () => {
     .then((selection) => {
       switch (selection.functionality !== null) {
         case selection.functionality === functionality[0]:
-          console.log('Creating project...');
+          process.stdout.write('Creating project...');
           createProject();
           break;
 
         case selection.functionality === functionality[1]:
-          console.log('Configuring lpc selected...');
+          process.stdout.write('Configuring lpc selected...');
           userConfiguration();
           break;
 
         case selection.functionality === functionality[2]:
-          console.log('Help selected...');
+          process.stdout.write('Help selected...');
           getHelp();
           break;
 
+        case selection.functionality === functionality[3]:
+          process.stdout.write('Exiting...');
+          exit();
+          break;
+
         default:
-          console.log('Nothing selected exiting...');
+          process.stdout.write('Nothing selected exiting...');
           break;
       }
     });

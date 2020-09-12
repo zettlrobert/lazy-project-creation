@@ -85,22 +85,22 @@ const createLocalRepository = async (projectName, projectPath) => {
 
 
   const gitIgnore = await execCreateGitIgnore();
-  console.log(gitIgnore);
+  process.stdout.write(gitIgnore);
 
   const gitInit = await execInitGitRepository();
-  console.log(gitInit);
+  process.stdout.write(gitInit);
 
   const addRemote = await execAddRemoteOrigin();
-  console.log(addRemote);
+  process.stdout.write(addRemote);
 
   const addContents = await execAddContents();
-  console.log(addContents);
+  process.stdout.write(addContents);
 
   const initCommit = await execInitCommit();
-  console.log(initCommit);
+  process.stdout.write(initCommit);
 
   const pushed = await execPush();
-  console.log(pushed);
+  process.stdout.write(pushed);
 
   return ({ success: true, message: 'Have fun Coding' });
 };
