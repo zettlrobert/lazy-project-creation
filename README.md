@@ -1,5 +1,10 @@
 # lazy-project-creation
-# $ npm i -g lazy-project-creation
+
+# **THE PROJECT HAS NOT BEEN WORKED ON SINCE EARY 2020.**
+
+The Project was one of my firsts, accordingly the Architecture, Featureset and planning were terrible.
+I want to redo lazy-project-creaton in go(lang).
+The featureset will also be improved.
 
 ![cover](docs/cover.png)
 
